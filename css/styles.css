@@ -1,0 +1,14 @@
+.navbar-biblioteca {
+    background-color: #009FB7;
+}
+
+.btn-biblioteca {
+    background-color: #009FB7;
+    color: #EFF1F3;
+    border: none;
+}
+
+.btn-biblioteca:hover {
+    background-color: #037584;
+    color: #EFF1F3;
+}
