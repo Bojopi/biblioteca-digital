@@ -25,3 +25,17 @@
     font-size: 12px;
     font-weight: bolder;
 }
+
+.portada-contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.portada-detalle {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
