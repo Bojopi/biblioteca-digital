@@ -12,3 +12,16 @@
     background-color: #037584;
     color: #EFF1F3;
 }
+
+.libro-card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+}
+
+.autor-libro {
+    color: #FED766;
+    font-size: 12px;
+    font-weight: bolder;
+}
