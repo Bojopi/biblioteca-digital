@@ -1,5 +1,7 @@
 
 const formulario = document.getElementById("formularioBusqueda");
+const parametros = new URLSearchParams(window.location.search);
+
 const libros = [
     {
         id: 1,
@@ -48,6 +50,10 @@ const libros = [
     }
 ];
 
+const idLibro = Number(parametros.get("id"));
+const libroSeleccionado = libros.find(libro => libro.id == idLibro);
+
+
 function prueba(event) {
     event.preventDefault();
     console.log('prueba');
@@ -80,7 +86,7 @@ function mostrarLibros(libros) {
                     <p class="card-text small"
                     >${element.descripcion}</p>
                     <a 
-                    href="detalle.html"
+                    href="detalle.html?id=${element.id}"
                     class="btn btn-biblioteca w-100">Ver detalle</a>
                 </div>
             </article>
@@ -109,3 +115,20 @@ if(formulario) {
 }
 
 mostrarLibros(libros);
+
+//CAMBIAR LOS DATOS DE LA PAGINA
+const tituloLibro = document.getElementById("titulo-libro");
+const autorLibro = document.getElementById("autor-libro");
+const descLibro = document.getElementById("desc-libro");
+
+if(tituloLibro) {
+    tituloLibro.textContent = libroSeleccionado.titulo;
+}
+
+if(autorLibro) {
+    autorLibro.textContent = libroSeleccionado.autor;
+}
+
+if(descLibro) {
+    descLibro.textContent = libroSeleccionado.descripcion;
+}
