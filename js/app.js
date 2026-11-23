@@ -1,6 +1,7 @@
 
 const formulario = document.getElementById("formularioBusqueda");
 const parametros = new URLSearchParams(window.location.search);
+const botonReserva = document.getElementById("reservarLibro");
 
 const libros = [
     {
@@ -131,4 +132,44 @@ if(autorLibro) {
 
 if(descLibro) {
     descLibro.textContent = libroSeleccionado.descripcion;
+}
+
+//RESERVAR UN LIBRO
+if (botonReserva && libroSeleccionado) {
+
+    if (!libroSeleccionado.disponible) {
+        botonReserva.disabled = true;
+        botonReserva.textContent = "Libro no disponible";
+    }
+
+    botonReserva.addEventListener("click", function() {
+
+        const reservas = JSON.parse(
+            localStorage.getItem("reservasBiblioteca") || "[]"
+        );
+
+        const yaReservado = reservas.some(
+            reserva => reserva.id === libroSeleccionado.id
+        );
+
+        if (yaReservado) {
+            alert("Este libro ya se encuentra en tus reservas.");
+            return;
+        }
+
+        reservas.push({
+            id: libroSeleccionado.id,
+            titulo: libroSeleccionado.titulo,
+            fecha: new Date().toISOString()
+        });
+
+        localStorage.setItem(
+            "reservasBiblioteca",
+            JSON.stringify(reservas)
+        );
+
+        alert("Reserva realizada correctamente.");
+
+    });
+
 }
